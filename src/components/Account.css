@@ -1,0 +1,181 @@
+/* Account Container Styling */
+.account-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Georgia', sans-serif;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url('C:\Cybexonics\perfume\public\luxury3.png') no-repeat center center/cover;
+  }
+  
+  /* Form Container Styling */
+  .form-container {
+    width: 100%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 2rem;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    animation: fadeIn 0.8s ease-in-out, slideDown 1s ease-in-out;
+    opacity: 0.9;
+  }
+  
+  /* Heading Styling */
+  h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-family: 'Georgia', sans-serif;
+    font-size: 1.8rem;
+  }
+  
+  /* Form Group Styling */
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #555;
+    font-size: 0.95rem;
+  }
+  
+  .form-group input {
+    width: 94%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+    font-family: 'Georgia', sans-serif;
+  }
+  
+  .form-group input:focus {
+    border-color: #205b75;
+    outline: none;
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Button Styling */
+  .acc-btn {
+    display: block;
+    width: 80%;
+    padding: 0.8rem;
+    background: #205b75;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    text-align: center;
+    margin-top: 1rem;
+    position: relative; /* Enables positioning */ 
+    right: -10%; /* Moves the button to the right */
+    font-family: 'Georgia', sans-serif;
+  }
+  
+  
+  .acc-btn:hover {
+    background: #66a8b8;
+    transform: translateY(-3px);
+  }
+  
+  /* Link Styling */
+  p {
+    text-align: center;
+    margin-top: 1rem;
+    color: #555;
+  }
+  
+  p span {
+    color: #205b75;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+  }
+  
+  p span:hover {
+    color: #66a8b8;
+  }
+  
+  /* Error Message Styling */
+  .error {
+    color: red;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
+  
+  /* Slide Down Animation */
+  @keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
+  
+  /* Slide Transition for Forms */
+  .register-form,
+  .login-form {
+    transition: all 0.5s ease-in-out;
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  
+  .register-form.active,
+  .login-form.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Responsive Design */
+  @media screen and (max-width: 768px) {
+    .form-container {
+        padding: 1.5rem;
+    }
+  
+    h2 {
+        font-size: 1.5rem;
+    }
+  
+    .form-group label {
+        font-size: 0.85rem;
+    }
+  
+    .form-group input {
+        font-size: 0.9rem;
+        padding: 0.7rem;
+    }
+  
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.7rem;
+    }
+  
+    p {
+        font-size: 0.85rem;
+    }
+  }
+  

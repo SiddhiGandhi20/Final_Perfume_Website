@@ -1,0 +1,145 @@
+.wishlist-container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+  
+  .wishlist-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+  
+  .wishlist-header h1 {
+    font-size: 24px;
+    font-weight: 600;
+  }
+  
+  .heart-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .wishlist-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  
+  .wishlist-table th {
+    text-align: left;
+    padding: 18px;
+    border-bottom: 1px solid #e2e8f0;
+    font-weight: bold;
+  }
+  
+  .wishlist-table td {
+    padding: 16px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  .actions-header {
+    text-align: right;
+  }
+  
+  .product-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .product-image {
+    width: 60px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  
+  .product-name {
+    font-weight: 500;
+  }
+  
+  .price-cell {
+    font-weight: 500;
+  }
+  
+  .stock-status {
+    color: #16a34a;
+  }
+  
+  .actions-cell {
+    text-align: right;
+  }
+  
+  .actions-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
+  
+  .add-to-cart-btn {
+    background-color: #205b75;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .add-to-cart-btn:hover {
+    background-color: #66a8b8;
+  }
+  .remove-btn{
+    background-color: #205b75;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  .remove-btn:hover{
+    background-color: #66a8b8;
+  }
+  
+  .date-added {
+    font-size: 14px;
+    color: #6b7280;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .wishlist-table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  
+    .wishlist-container {
+      padding: 16px;
+    }
+  
+    .product-info {
+      gap: 8px;
+    }
+  }
+  .popup-notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 128, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    z-index: 9999;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  

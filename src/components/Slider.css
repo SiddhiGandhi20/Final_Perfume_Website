@@ -1,0 +1,66 @@
+body {
+    font-family: Georgia, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.slider-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    overflow: hidden; /* Hide overflow to ensure images stay within bounds */
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.slider {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    animation: slideAnimation 30s infinite linear; /* Increased the duration to 30 seconds */
+    width: max-content; /* Ensures the width is based on the total width of the slides */
+    gap: 20px; /* Set the gap between images */
+}
+
+.slide {
+    min-width: 200px; /* Increased width for images */
+    flex-shrink: 0; /* Prevent shrinking of slides */
+}
+
+.slide img {
+    width: 100%; /* Ensure image takes up the full width of the .slide */
+    height: auto;
+    transition: transform 0.5s ease-in-out;
+    border: 1px solid #333; /* Adding a solid border around images */
+    border-radius: 8px; /* Optional: rounded corners for a more polished look */
+}
+
+/* Continuous Sliding Animation */
+@keyframes slideAnimation {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* Adjust the transform value to ensure continuous sliding */
+    }
+}
+
+/* Hover effect for zoom
+.slider:hover .slide img {
+    transform: scale(1.1);
+} */
+
+/* Duplicate the images to make the sliding continuous */
+.slider::after {
+    content: "";
+    display: flex;
+    position: absolute;
+    left: 100%; /* Move the duplicate images to the right of the original set */
+}

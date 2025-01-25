@@ -1,0 +1,108 @@
+/* General Section Styling */
+.mid-section-container {
+    width: 100%;
+    padding: 2rem 1rem;
+    max-width: 7xl;
+    margin: 0 auto;
+}
+
+/* Grid layout for three cards side by side */
+.mid-card-container {
+    display: grid;
+    gap: 0; /* Remove the gap between the cards */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid layout */
+    justify-items: center;
+}
+
+@media (min-width: 768px) {
+    .mid-card-container {
+        grid-template-columns: repeat(3, 1fr); /* Three cards side by side on larger screens */
+    }
+}
+
+/* Card Styling */
+.mid-unique-card {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    min-height: 300px; /* Adjust the height of the card */
+    height: 500px;
+    width: 100%; /* Use full available width */
+    max-width: 420px; /* Limit the card width for better spacing */
+    margin: 0 auto;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    /* border-radius: 0.5rem; Add rounded corners */
+    margin-left: 20px;
+}
+
+.mid-unique-card:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover, including content */
+}
+
+/* Using ::before pseudo-element for the background image */
+.mid-unique-card::before {
+    content: "";
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: inherit; /* Inherit the background image */
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    transition: transform 0.3s ease; /* Smooth zoom effect */
+}
+
+.mid-unique-card:hover::before {
+    transform: scale(1.1); /* Slight zoom effect on background */
+}
+
+/* Overlay Styling */
+.mid-unique-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2rem;
+    position: relative;
+    z-index: 1; /* Ensure content stays above background */
+}
+
+.mid-card-content-left {
+    text-align: justify;
+    margin-top: 270px; /* Adjusted for smaller card height */
+}
+
+.mid-card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-align: left;
+}
+
+.mid-card-description {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    text-align: left;
+}
+
+.mid-shop-now-button {
+    padding: 0.75rem 1.5rem;
+    background-color: #205b75;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.mid-shop-now-button:hover {
+    background-color: #66a8b8;
+}
+
+.mid-shop-now-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(240, 165, 0, 0.3);
+}

@@ -1,0 +1,56 @@
+/* General styles for the women container */
+.women-container {
+  background: linear-gradient(to right, #205b75, #66a8b8);;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 18vh;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  
+  /* Content styling */
+  .women-content {
+    max-width: 600px;
+  }
+  
+  /* Title styling */
+  .women-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-family: 'Georgia',sans-serif;
+    line-height: 1.2;
+    color: white;
+  }
+  
+  /* Breadcrumb styling */
+  .women-breadcrumb {
+    font-size: 1rem;
+    font-family: 'Georgia', sans-serif;
+    color: white;
+    margin: 0;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .women-title {
+      font-size: 2.5rem;
+    }
+  
+    .women-breadcrumb {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .women-title {
+      font-size: 2rem;
+    }
+  
+    .women-breadcrumb {
+      font-size: 0.9rem;
+    }
+  }
+  

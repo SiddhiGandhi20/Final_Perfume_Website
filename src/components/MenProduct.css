@@ -1,0 +1,254 @@
+/* Main container for sidebar and products */
+.men-product-container {
+    display: flex;              /* Sidebar and products appear side by side */
+    gap: 20px;                  /* Space between sidebar and products */
+    padding: 20px;
+    flex-wrap: wrap;            /* Allow wrapping on smaller screens */
+}
+
+/* Sidebar styling */
+/* Sidebar Container */
+.men-sidebar {
+    flex: 1;
+    max-width: 250px;
+    height: 400px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  /* Categories Section */
+  .men-categories {
+    margin-bottom: 20px;
+  }
+  
+  .men-categories h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .men-categories ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .men-categories li {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .men-categories li:hover {
+    color: #f0b71a;
+  }
+  
+  /* Price Filter Section */
+  .men-price-filter {
+    margin-bottom: 140px;
+  }
+  
+  .men-price-filter h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* Range Slider */
+  .men-range-slider {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .men-range-slider input[type="range"] {
+    width: 100%;
+    margin-bottom: 10px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    background-color: #ddd;
+    height: 5px;
+    border-radius: 5px;
+  }
+  
+  .men-range-slider input[type="range"]:focus {
+    outline: none;
+  }
+  
+  /* Price Range and Filter Button */
+  .men-price-range {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .men-price-range span {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .men-filter-button {
+    padding: 8px 16px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .men-filter-button:hover {
+    background-color: #0056b3;
+  }
+  
+/* Products container styling */
+.men-products {
+    flex: 3;                    /* Take up more space than sidebar */
+    display: flex;               /* Flexbox for horizontal items */
+    gap: 50px;                   /* Space between cards */
+    flex-wrap: wrap;             /* Wrap items on smaller screens */
+    margin-top: 20px;
+    width: 100%; 
+    margin-bottom: 120px;                /* Ensure it takes full available width */
+}
+
+/* men Card */
+.men-card {
+    padding: 15px;
+    text-align: center;
+    /* background-color: #fff; */
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+    /* transition: transform 0.3s, box-shadow 0.3s; */
+    /* border-radius: 10px; */
+    width: 25%;                  /* 3 items per row */
+    height: 300px;               /* Fixed height for consistency */
+    display: flex;               /* Flexbox to align content */
+    flex-direction: column;      /* Stack content vertically */
+}
+
+.men-card:hover {
+    transform: translateY(-5px);
+    /* box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); */
+}
+
+.men-card img {
+    width: 100%;
+    height: 70%;                 /* Adjust image height */
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.men-card h4 {
+    font-size: 1rem;
+    margin: 10px 0;
+    color: #222;
+}
+
+.men-card p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Action Icons */
+.men-action-icons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.men-action-icons i {
+    font-size: 20px;
+    color: #666;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    padding: 5px;
+    transition: color 0.3s, transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.men-action-icons i:hover {
+    color: gold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.2);
+}
+
+.men-card:hover .men-action-icons {
+    display: flex;
+}
+
+/* Ratings */
+.men-rating {
+    margin: 10px 0;
+    color: gold;
+    align-self: center;
+}
+
+.men-rating .fa-star {
+    font-size: 1.2rem;
+    margin: 0 4px;
+}
+
+.men-rating .fas {
+    color: gold;
+}
+
+.men-rating .far {
+    color: #ccc;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    /* Tablet and smaller screens */
+    .men-products {
+        flex-direction: column;  /* Stack cards vertically on smaller screens */
+    }
+
+    .men-card {
+        width: 100%;  /* Make cards take full width */
+        height: auto;  /* Allow cards to adjust height */
+    }
+
+    .men-card img {
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobile screens */
+    .men-product-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .men-sidebar {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .men-products {
+        flex-direction: column;  /* Stack products vertically */
+    }
+
+    .men-card {
+        width: 100%;   /* Cards take full width */
+        height: auto;
+    }
+
+    .men-card img {
+        height: auto;
+    }
+
+    .men-action-icons i {
+        font-size: 16px;
+    }
+}
