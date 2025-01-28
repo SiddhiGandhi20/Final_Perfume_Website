@@ -1,25 +1,29 @@
 .perfume-container {
-    width: 100%;
-    /* height: 15vh; */
-    display: flex;
-    flex-direction: column;
-    background: #ffffff; /* White background */
-    color: #205b75; /* Gold text color */
-    font-family: 'Georgia', sans-serif;
-    overflow-x: hidden;
-  }
-  
-  .perfume-header {
-    
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background: #ffffff; /* White background */
-    border-bottom: 2px solid #205b75; /* Gold border */
-    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.2); /* Subtle gold shadow */
-  }
-  
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff; /* White background */
+  color: #205b75; /* Gold text color */
+  font-family: 'Georgia', sans-serif;
+  overflow-x: hidden;
+  margin-top: 80px; /* Adjust this based on the height of your header */
+}
+
+.perfume-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: #ffffff; /* White background */
+  border-bottom: 2px solid #205b75; /* Gold border */
+  box-shadow: 0 4px 10px #29627a;; /* Subtle gold shadow */
+  z-index: 1000; /* Ensures the header stays above other elements */
+}
+
   .perfume-logo {
     font-size: 24px;
     font-weight: 700;
@@ -48,7 +52,7 @@
   .perfume-actions {
     display: flex;
     align-items: center;
-    gap: 35px;
+    gap: 45px;
   }
   
   .perfume-actions i,

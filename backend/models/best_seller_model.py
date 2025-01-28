@@ -14,6 +14,8 @@ class BestSellerDetailsModel:
                 "type": detail_data["type"],
                 "keynotes": detail_data["keynotes"],
                 "description": detail_data["description"],
+                "ratings": detail_data.get("ratings"),
+
             }
             result = self.collection.insert_one(item)
             return {"id": str(result.inserted_id), "message": "Perfume created successfully"}
@@ -33,6 +35,8 @@ class BestSellerDetailsModel:
                     "type": item["type"],
                     "keynotes": item["keynotes"],
                     "description": item["description"],
+                    "ratings": item.get("ratings"),  # New field
+
                 }
                 for item in items
             ]
@@ -52,6 +56,8 @@ class BestSellerDetailsModel:
                     "type": item["type"],
                     "keynotes": item["keynotes"],
                     "description": item["description"],
+                    "ratings": item.get("ratings"),  # New field
+
                 }
             return None
         except PyMongoError as e:

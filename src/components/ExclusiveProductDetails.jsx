@@ -125,11 +125,62 @@ const ExclusiveProductDetails = ({ cartItems, setCart, wishlistItems, setWishlis
               <p>{product.reviews}</p>
             </div>
           )}
-          <div className="exclusive-quantity-control">
-            <button onClick={decreaseQuantity}>-</button>
-            <input type="number" value={quantity} readOnly />
-            <button onClick={increaseQuantity}>+</button>
-          </div>
+          <div className="exclusive-quantity-control"style={{ display: 'flex', alignItems: 'center', marginBottom: '40px' }}>
+  <button
+    onClick={decreaseQuantity}
+    style={{
+      padding: '0.5rem 1rem',
+      width: '60px',
+      height: '35px',
+      border: '1px solid black',
+      color: 'black',
+      backgroundColor: 'transparent',
+      cursor: 'pointer',
+      transition: 'background-color 0.3s',
+      fontSize: '1.2rem',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}
+  >
+    -
+  </button>
+  <input
+    type="number"
+    value={quantity}
+    readOnly
+    style={{
+      width: '60px',
+      height: '35px',
+      textAlign: 'center',
+      border: '1px solid black',
+      fontSize: '1.2rem',
+      margin: '0 0.5rem',
+      padding: '0 5px',
+      boxSizing: 'border-box',
+      marginBottom: '5px', // Added margin-top here
+    }}
+  />
+  <button
+    onClick={increaseQuantity}
+    style={{
+      padding: '1rem 0.5rem',
+      width: '60px',
+      height: '35px',
+      border: '1px solid black',
+      color: 'black',
+      backgroundColor: 'transparent',
+      cursor: 'pointer',
+      transition: 'background-color 0.3s',
+      fontSize: '1.2rem',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}
+  >
+    +
+  </button>
+</div>
           <div className="exclusive-actions">
             <button
               className={`exclusive-wishlist ${isProductInWishlist ? 'in-wishlist' : ''}`}

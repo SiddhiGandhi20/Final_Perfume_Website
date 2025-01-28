@@ -1,0 +1,218 @@
+/* Main container for the products */
+.perfume-admin-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Category section */
+.perfume-category-section {
+  margin-bottom: 50px; /* Space between categories */
+}
+
+.perfume-category-title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 10px;
+}
+
+/* Grid layout for products */
+.perfume-product-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 items per row */
+  gap: 60px; /* Space between items */
+  justify-content: end; /* Shift all items towards the right */
+}
+
+/* Individual product card */
+.perfume-product-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+  text-align: center;
+}
+
+.perfume-product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Product image */
+.perfume-product-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Product details */
+.perfume-product-details {
+  padding: 10px;
+}
+
+.perfume-product-details h4 {
+  font-size: 16px;
+  color: #555;
+  margin: 10px 0;
+}
+
+.perfume-product-details p {
+  font-size: 14px;
+  color: #777;
+  margin: 5px 0;
+  line-height: 1.4;
+}
+
+/* Action buttons */
+.perfume-action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.perfume-update-btn,
+.perfume-delete-btn {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.perfume-update-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.perfume-update-btn:hover {
+  background-color: #0056b3;
+}
+
+.perfume-delete-btn {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.perfume-delete-btn:hover {
+  background-color: #a71d2a;
+}
+
+/* Add new product button */
+.perfume-add-product-btn {
+  display: block;
+  margin: 30px auto;
+  padding: 12px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #28a745;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.perfume-add-product-btn:hover {
+  background-color: #218838;
+  transform: translateY(-3px);
+}
+
+/* Loading text */
+.perfume-loading-text {
+  font-size: 16px;
+  color: #888;
+  text-align: center;
+}
+
+.perfume-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.perfume-modal {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.perfume-form-group {
+  margin-bottom: 15px;
+}
+
+.perfume-form-group label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.perfume-form-group input,
+.perfume-form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.perfume-form-actions {
+  display: flex;
+  justify-content: space-between;
+}
+.sidebar .dropdown {
+  position: relative;
+}
+
+.sidebar .dropdown-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar .dropdown-btn:hover {
+  background-color: #444;
+}
+
+.sidebar .dropdown-container {
+  display: none;
+  padding-left: 20px;
+}
+
+.sidebar .dropdown-container.visible {
+  display: block;
+}
+
+.sidebar .dropdown-link {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 8px 0;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar .dropdown-link:hover {
+  background-color: #555;
+}

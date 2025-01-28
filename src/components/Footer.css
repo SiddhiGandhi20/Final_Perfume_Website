@@ -76,7 +76,9 @@
 
 .social-icons {
   margin-top: 20px;
+  margin-bottom: 20px;
   display: flex;
+  justify-content: center;  /* Centering the icons */
   color: white;
 }
 
@@ -85,6 +87,7 @@
   margin-right: 15px;
   font-size: 24px;
   color: white;
+  align-items: center;
 }
 
 .social-icon:hover {

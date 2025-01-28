@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
-import './Account.css';
+import "./Account.css";
 
 function Account() {
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({ email: "", password: "", name: "" });
   const [errors, setErrors] = useState({ email: "", password: "", name: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+  const [popupMessage, setPopupMessage] = useState("");
   const navigate = useNavigate(); // Initialize navigate
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -15,7 +15,7 @@ function Account() {
 
   const toggleForm = () => {
     setIsLogin(!isLogin);
-    setFormData({ email: "", password: "", name: "" });
+    setFormData({ email: "", password: "", name: "" }); // Clear input fields
     setErrors({});
   };
 
@@ -25,7 +25,8 @@ function Account() {
       formErrors.email = "Invalid email format";
     }
     if (!passwordRegex.test(formData.password)) {
-      formErrors.password = "Password must be at least 8 characters long and include a letter and a number";
+      formErrors.password =
+        "Password must be at least 8 characters long and include a letter and a number";
     }
     if (!isLogin && formData.name.trim() === "") {
       formErrors.name = "Name is required for registration";
@@ -43,17 +44,11 @@ function Account() {
 
     setIsSubmitting(true);
 
-    // Determine endpoint based on login type
     let endpoint = isLogin ? "http://localhost:5000/login" : "http://localhost:5000/signup";
-
-    // For admin email/password, use the admin-login endpoint
-    if (isLogin && formData.email === "siddhi123@example.com" && formData.password === "Siddhi123") {
-      endpoint = "http://localhost:5000/admin-login";
-    }
 
     const payload = isLogin
       ? { email: formData.email, password: formData.password }
-      : { name: formData.name, email: formData.email, password: formData.password, confirm_password: formData.password };
+      : { name: formData.name, email: formData.email, password: formData.password };
 
     try {
       const response = await fetch(endpoint, {
@@ -67,25 +62,25 @@ function Account() {
       const data = await response.json();
 
       if (response.ok) {
-        alert(data.message);
-
-        // Handle admin login
-        if (endpoint === "http://localhost:5000/admin-login") {
-          navigate("/adminPage"); // Redirect to adminPage
-        } else if (isLogin && data.token) {
-          localStorage.setItem("authToken", data.token); // Save token for authenticated requests
-          navigate("/"); // Redirect to the home page
+        setPopupMessage(isLogin ? "Login Successful!" : "Registration Successful! Please log in.");
+        if (isLogin && data.token) {
+          localStorage.setItem("authToken", data.token); // Save token
+          if (data.role === "admin") {
+            navigate("/adminPage"); // Navigate to admin page
+          } else {
+            navigate("/"); // Navigate to home page
+          }
         }
-        setFormData({ email: "", password: "", name: "" });
+        setFormData({ email: "", password: "", name: "" }); // Clear input fields after success
       } else {
-        alert(data.error || "An unexpected error occurred");
+        setPopupMessage(data.error || "An error occurred.");
       }
-
-      setIsSubmitting(false);
     } catch (error) {
-      setIsSubmitting(false);
       console.error("Error:", error);
-      alert("An unexpected error occurred");
+      setPopupMessage("An unexpected error occurred.");
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setPopupMessage(""), 3000); // Clear popup after 3 seconds
     }
   };
 
@@ -97,6 +92,7 @@ function Account() {
 
   return (
     <div className="account-container">
+      {popupMessage && <div className="popup-message">{popupMessage}</div>}
       <div className="form-container">
         <div className={isLogin ? "login-form active" : "register-form active"}>
           <h2>{isLogin ? "Login" : "Register"}</h2>
@@ -111,6 +107,7 @@ function Account() {
                   placeholder="Enter your name"
                   value={formData.name}
                   onChange={handleChange}
+                  autoComplete="off" // Disable autofill
                 />
                 {errors.name && <p className="error">{errors.name}</p>}
               </div>
@@ -124,6 +121,7 @@ function Account() {
                 placeholder="Enter your email"
                 value={formData.email}
                 onChange={handleChange}
+                autoComplete="off" // Disable autofill
               />
               {errors.email && <p className="error">{errors.email}</p>}
             </div>
@@ -136,6 +134,7 @@ function Account() {
                 placeholder="Enter your password"
                 value={formData.password}
                 onChange={handleChange}
+                autoComplete="off" // Disable autofill
               />
               {errors.password && <p className="error">{errors.password}</p>}
             </div>

@@ -83,6 +83,9 @@
     cursor: pointer;
     transition: background-color 0.3s;
     font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .women-quantity-control button:hover {
@@ -96,7 +99,10 @@
     border: 1px solid black;
     font-size: 1.2rem;
     margin: 0 0.5rem;
+    padding: 0 5px; /* Added padding for spacing inside the input box */
+    box-sizing: border-box; /* Ensure padding doesn't affect the width */
   }
+  
   
   .women-actions {
     display: flex;

@@ -125,21 +125,21 @@
 
 /* Specifically for wishlist and compare buttons */
 .actions button.wishlist {
-  background-color: #ff6b81; /* Wishlist button specific color */
-  color: white;
+  background-color: white; /* Wishlist button specific color */
+  color: black;
 }
 
 .actions button.wishlist:hover {
-  background-color: #ff4d5c; /* Wishlist button hover color */
+  background-color: white; /* Wishlist button hover color */
 }
 
 .actions button.compare {
-  background-color: #2d87f0; /* Add to cart button specific color */
-  color: white;
+  background-color: white; /* Add to cart button specific color */
+  color: black;
 }
 
 .actions button.compare:hover {
-  background-color: #256ab3; /* Add to cart button hover color */
+  background-color: white; /* Add to cart button hover color */
 }
 
 .actions button i {

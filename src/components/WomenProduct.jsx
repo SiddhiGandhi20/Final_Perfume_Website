@@ -32,7 +32,7 @@ const WomenProducts = ({ cartItems, setCart, wishlistItems, setWishlistItems }) 
 
     const updatedCart = existingProduct
       ? cartItems.map((item) =>
-          item.id === product.id
+          item._id === product._id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         )
@@ -40,8 +40,9 @@ const WomenProducts = ({ cartItems, setCart, wishlistItems, setWishlistItems }) 
 
     setCart(updatedCart);
     setPopupMessage(`${product.name} added to your cart!`);
-    setTimeout(() => setPopupMessage(""), 3000);
+    setTimeout(() => setPopupMessage(''), 3000);
   };
+
 
 
 

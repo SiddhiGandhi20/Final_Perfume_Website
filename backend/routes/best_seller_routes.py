@@ -8,8 +8,13 @@ import socket
 def create_bestseller_details_routes(db, upload_folder):
     bestseller_bp = Blueprint('bestseller', __name__)
 
-    # Instantiate the exclusivePerfumeDetailsModel
+    # Instantiate the BestSellerDetailsModel
     perfume_model = BestSellerDetailsModel(db)
+
+    def serialize_document(document):
+        """Helper function to convert ObjectId to string in MongoDB documents."""
+        document["_id"] = str(document["_id"])
+        return document
 
     # Get the host IP address
     def get_host_ip():
@@ -27,9 +32,10 @@ def create_bestseller_details_routes(db, upload_folder):
             image = request.files.get("image")
             type_ = request.form.get("type")
             keynotes = request.form.get("keynotes")
+            ratings = request.form.get("ratings")  # New field
 
             # Log received data
-            print(f"Received data - name: {name}, description: {description}, price: {price}, image: {image}, type: {type_}, keynotes: {keynotes}")
+            print(f"Received data - name: {name}, description: {description}, price: {price}, image: {image}, type: {type_}, keynotes: {keynotes}, ratings: {ratings}")
 
             # Validate required fields
             missing_fields = [field for field in ["name", "description", "price", "type", "keynotes"] if not request.form.get(field)]
@@ -64,7 +70,8 @@ def create_bestseller_details_routes(db, upload_folder):
                 "price": price_value,
                 "image_url": image_url,
                 "type": type_,
-                "keynotes": keynotes
+                "keynotes": keynotes,
+                "ratings": ratings  # Include the new field
             }
 
             # Insert into MongoDB
@@ -77,14 +84,14 @@ def create_bestseller_details_routes(db, upload_folder):
             print(f"Error in create_perfume_detail: {e}")
             return jsonify({"message": f"Error creating perfume: {str(e)}"}), 500
 
-    # GET: Fetch all bestseller
+    # GET: Fetch all bestsellers
     @bestseller_bp.route("/bestseller", methods=["GET"])
     def get_all_bestseller():
         try:
             bestseller = perfume_model.get_all_details()
             return jsonify(bestseller), 200
         except Exception as e:
-            return jsonify({"message": f"Error fetching bestseller: {str(e)}"}), 500
+            return jsonify({"message": f"Error fetching bestsellers: {str(e)}"}), 500
 
     # GET: Fetch a perfume by ID
     @bestseller_bp.route("/bestseller/<id>", methods=["GET"])
@@ -135,12 +142,12 @@ def create_bestseller_details_routes(db, upload_folder):
             if not result:
                 return jsonify({"message": f"No perfume found with id: {id}"}), 404
 
-            # Fetch the updated docuexclusivet
+            # Fetch the updated document
             updated_perfume = perfume_model.get_detail_by_id(id)
             if updated_perfume:
                 return jsonify(updated_perfume), 200
             else:
-                return jsonify({"message": "Failed to fetch updated docuexclusivet"}), 500
+                return jsonify({"message": "Failed to fetch updated perfume"}), 500
 
         except Exception as e:
             print(f"Error in update_perfume_detail: {e}")

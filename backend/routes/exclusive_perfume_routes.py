@@ -11,6 +11,11 @@ def create_exclusive_perfume_details_routes(db, upload_folder):
     # Instantiate the exclusivePerfumeDetailsModel
     perfume_model = ExclusivePerfumeDetailsModel(db)
 
+    def serialize_document(document):
+        """Helper function to convert ObjectId to string in MongoDB documents."""
+        document["_id"] = str(document["_id"])
+        return document
+
     # Get the host IP address
     def get_host_ip():
         host_ip = socket.gethostbyname(socket.gethostname())
@@ -107,57 +112,43 @@ def create_exclusive_perfume_details_routes(db, upload_folder):
     # PUT: Update a perfume by ID
     @exclusive_perfume_bp.route("/exclusive_perfumes/<id>", methods=["PUT"])
     def update_perfume_detail(id):
-        try:
-            # Retrieve data from form-data
-            update_data = request.form.to_dict()
+            try:
+                # Validate ObjectId format
+                if not ObjectId.is_valid(id):
+                    return jsonify({"message": "Invalid ID format. Must be a 24-character hex string."}), 400
 
-            if "ratings" in update_data:
-                try:
-                    update_data["ratings"] = float(update_data["ratings"])
-                except ValueError:
-                    return jsonify({"message": "Invalid ratings format. Please provide a numeric value."}), 400
+                # Convert id to ObjectId
+                perfume_id = ObjectId(id)
 
-            # Validate and process the fields
-            if "price" in update_data:
-                try:
-                    update_data["price"] = float(update_data["price"].replace(",", ""))
-                except ValueError:
-                    return jsonify({"message": "Invalid price format. Please provide a numeric value."}), 400
+                # Parse the request payload
+                update_data = request.json
 
-            # Handle image file if provided
-            if "image" in request.files:
-                image = request.files["image"]
-                if image.filename:
-                    filename = secure_filename(image.filename)
+                # Check if required fields are present
+                required_fields = ["name", "description", "price", "keynotes", "image_url"]
+                for field in required_fields:
+                    if field not in update_data:
+                        return jsonify({"message": f"Missing required field: {field}"}), 400
 
-                    # Save the image to the upload folder
-                    exclusive_perfumes_folder = os.path.join(upload_folder, "exclusive_perfumes")
-                    if not os.path.exists(exclusive_perfumes_folder):
-                        os.makedirs(exclusive_perfumes_folder)
+                # Perform the update
+                result = db.exclusive_perfumes.update_one(
+                    {"_id": perfume_id},
+                    {"$set": update_data}
+                )
 
-                    image_path = os.path.join(exclusive_perfumes_folder, filename)
-                    image.save(image_path)
+                if result.matched_count == 0:
+                    return jsonify({"message": f"No perfume found with id: {id}"}), 404
 
-                    # Construct the image URL
-                    host_ip = get_host_ip()
-                    update_data["image_url"] = f"http://{host_ip}:5000/uploads/exclusive_perfumes/{filename}"
+                # Fetch the updated document
+                updated_perfume = db.exclusive_perfumes.find_one({"_id": perfume_id})
+                if updated_perfume:
+                    updated_perfume = serialize_document(updated_perfume)  # Convert ObjectId to string
+                    return jsonify(updated_perfume), 200
+                else:
+                    return jsonify({"message": "Failed to fetch updated perfume data."}), 500
 
-            # Perform the update operation
-            result = perfume_model.update_detail(id, update_data)
-
-            if not result:
-                return jsonify({"message": f"No perfume found with id: {id}"}), 404
-
-            # Fetch the updated docuexclusivet
-            updated_perfume = perfume_model.get_detail_by_id(id)
-            if updated_perfume:
-                return jsonify(updated_perfume), 200
-            else:
-                return jsonify({"message": "Failed to fetch updated docuexclusivet"}), 500
-
-        except Exception as e:
-            print(f"Error in update_perfume_detail: {e}")
-            return jsonify({"message": f"Error updating perfume: {str(e)}"}), 500
+            except Exception as e:
+                print(f"Error updating perfume: {e}")
+                return jsonify({"message": f"Error updating perfume: {str(e)}"}), 500
 
     # DELETE: Delete a perfume by ID
     @exclusive_perfume_bp.route("/exclusive_perfumes/<id>", methods=["DELETE"])

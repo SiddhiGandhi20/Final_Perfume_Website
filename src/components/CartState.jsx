@@ -3,6 +3,7 @@ import ExclusiveProduct from './ExclusiveProduct';
 import Cart from './Cart';
 import WomenProduct from './WomenProduct';
 import MenProduct from './MenProduct';
+import TopTrending from './TopTrending';
 
 const CartState = () => {
   const [cartItems, setCart] = useState([]);
@@ -25,6 +26,7 @@ const CartState = () => {
       <WomenProduct cartItems={cartItems} setCart={setCart} />
       <MenProduct cartItems={cartItems} setCart={setCart} />
       <Cart cartItems={cartItems} setCart={setCart} />
+      <TopTrending cartItems={cartItems} setCart={setCart}/>
     </div>
   );
 };

@@ -40,33 +40,26 @@ const WomenProductDetails = ({ cartItems, setCart, wishlistItems, setWishlistIte
   const handleAddToCart = (event, product) => {
     event.stopPropagation(); // Prevent triggering parent events
   
-    // Check if the product already exists in the cart
+    // Find if the product already exists in the cart
     const existingProduct = cartItems.find((item) => item._id === product._id);
   
     if (existingProduct) {
-      // If the product exists, update the quantity by adding the new quantity to the existing one
+      // Update the quantity of the existing product
       setCart((prevCart) =>
         prevCart.map((item) =>
-          item._id === product._id
-            ? { ...item, quantity: item.quantity + quantity } // Update quantity
-            : item
+          item._id === product._id ? { ...item, quantity: item.quantity + quantity } : item
         )
       );
     } else {
-      // If the product does not exist, add the new product to the cart
+      // Add the new product to the cart
       setCart((prevCart) => [...prevCart, { ...product, quantity }]);
     }
   
-    // Show the popup message
     setPopupMessage(`${product.name} added to your cart!`);
   
     // Clear the popup message after 3 seconds
     setTimeout(() => setPopupMessage(""), 3000);
   };
-  
-  
-  
-  
 
   // Handle add to wishlist functionality
   const handleAddToWishlist = (product) => {
@@ -126,11 +119,63 @@ const WomenProductDetails = ({ cartItems, setCart, wishlistItems, setWishlistIte
           </ul>
 
           {/* Quantity Control */}
-          <div className="women-quantity-control">
-            <button onClick={decreaseQuantity}>-</button>
-            <input type="number" value={quantity} readOnly />
-            <button onClick={increaseQuantity}>+</button>
-          </div>
+          <div className="women-quantity-control" style={{ display: 'flex', alignItems: 'center', marginBottom: '40px' }}>
+  <button
+    onClick={decreaseQuantity}
+    style={{
+      padding: '0.5rem 1rem',
+      width: '60px',
+      height: '35px',
+      border: '1px solid black',
+      color: 'black',
+      backgroundColor: 'transparent',
+      cursor: 'pointer',
+      transition: 'background-color 0.3s',
+      fontSize: '1.2rem',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}
+  >
+    -
+  </button>
+  <input
+    type="number"
+    value={quantity}
+    readOnly
+    style={{
+      width: '60px',
+      height: '35px',
+      textAlign: 'center',
+      border: '1px solid black',
+      fontSize: '1.2rem',
+      margin: '0 0.5rem',
+      padding: '0 5px',
+      boxSizing: 'border-box',
+      marginTop: '5px', // Added margin-top here
+    }}
+  />
+  <button
+    onClick={increaseQuantity}
+    style={{
+      padding: '1rem 0.5rem',
+      width: '60px',
+      height: '35px',
+      border: '1px solid black',
+      color: 'black',
+      backgroundColor: 'transparent',
+      cursor: 'pointer',
+      transition: 'background-color 0.3s',
+      fontSize: '1.2rem',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}
+  >
+    +
+  </button>
+</div>
+
 
           <div className="women-actions">
             <button className="women-wishlist" onClick={() => handleAddToWishlist(product)}>

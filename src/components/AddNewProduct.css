@@ -1,0 +1,112 @@
+.add-product-page {
+  width: 600px; /* Increased width */
+  margin: 50px auto;
+  padding: 30px;
+  border: none;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.page-title {
+  text-align: center;
+  font-size: 28px;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #B89130, #D4AF37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.add-product-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.add-product-form label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 5px;
+  letter-spacing: 0.5px;
+}
+
+.add-product-form input,
+.add-product-form textarea {
+  width: 90%;
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background-color: #fdfdfd;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.add-product-form input:focus,
+.add-product-form textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
+  outline: none;
+}
+
+.add-product-form textarea {
+  resize: vertical;
+  min-height: 100px;
+  font-family: "Arial", sans-serif;
+}
+
+.submit-btn {
+  background: linear-gradient(90deg, #B89130, #D4AF37);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  width: 180px;
+  transition: transform 0.2s, box-shadow 0.3s, background 0.3s;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(90deg, #D4AF37, #B89130);
+  box-shadow: 0 5px 15px rgba(0, 91, 187, 0.5);
+  transform: scale(1.05);
+}
+
+.submit-btn:active {
+  transform: scale(1);
+}
+
+.add-product-form input::placeholder,
+.add-product-form textarea::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.add-product-form button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .add-product-page {
+      padding: 20px;
+  }
+
+  .page-title {
+      font-size: 24px;
+  }
+
+  .submit-btn {
+      font-size: 16px;
+      padding: 10px 15px;
+  }
+}

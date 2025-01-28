@@ -1,0 +1,53 @@
+.dashboard-page {
+    display: flex;
+  }
+  
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    transition: margin-left 0.3s ease;
+  }
+  
+  .main-content.shifted {
+    margin-left: 250px;
+  }
+  
+  .header {
+    background-color: #f7f7f7;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .header input {
+    width: 300px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .dashboard {
+    padding: 20px;
+  }
+  
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .card i {
+    font-size: 40px;
+    color: #3498db;
+    margin-bottom: 10px;
+  }
+  

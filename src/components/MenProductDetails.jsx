@@ -122,7 +122,16 @@ const MenProductDetails = ({ cartItems, setCart, wishlistItems, setWishlistItems
           {/* Quantity Control */}
           <div className="men-quantity-control">
             <button onClick={decreaseQuantity}>-</button>
-            <input type="number" value={quantity} readOnly />
+            <input type="number" value={quantity} readOnly   style={{
+      width: '60px',
+      height: '35px',
+      textAlign: 'center',
+      border: '1px solid black',
+      fontSize: '1.2rem',
+      margin: '0 0.5rem',
+      padding: '0 5px',
+      boxSizing: 'border-box',
+    }}/>
             <button onClick={increaseQuantity}>+</button>
           </div>
 

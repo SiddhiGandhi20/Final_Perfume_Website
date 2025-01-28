@@ -1,0 +1,86 @@
+.user-container {
+  padding: 20px;
+  /* font-family: 'Arial', sans-serif; */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  width: 90%;
+  max-width: 1200px;
+}
+/* Heading */
+h1 {
+  text-align: center;
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Table styles */
+.user-table {
+  width: 80%;  /* Adjust width as per your requirement */
+  margin-left: 15%;  /* Shift it towards the right by 20% of the container width */
+  border-collapse: collapse;
+}
+
+.user-table th,
+.user-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #f1f1f1;
+  font-size: 18px;
+  color: #555;
+}
+
+.user-table th {
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+.user-table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.user-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Button styles */
+.btn-edit,
+.btn-delete {
+  padding: 6px 12px;
+  margin: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-edit:hover {
+  background-color: #e0f7e0;
+}
+
+.btn-delete:hover {
+  background-color: #f8d7da;
+}
+
+/* Error message styles */
+.error-message {
+  color: #f44336;
+  font-weight: normal;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Loading state styles */
+.loading {
+  color: #777;
+  font-size: 16px;
+  text-align: center;
+  font-style: italic;
+  margin-top: 20px;
+}
